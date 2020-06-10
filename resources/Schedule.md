@@ -39,6 +39,11 @@ For learning HTML/CCS/JS: [codecademy.com](https://www.codecademy.com)
 ### **Week 1 (d3 series):**
 
 #### Key Concepts
+<<<<<<< HEAD
+=======
+- Intro to HTML & CSS
+- Breaking down what JavaScript is
+>>>>>>> upstream/master
 
 #### Materials
 
@@ -52,7 +57,11 @@ This is an overview and introduction to web technologies including HTML, CSS and
 
 #### Assignments
 
+<<<<<<< HEAD
 No assignments for this class!
+=======
+Assignment will be emailed to the class.
+>>>>>>> upstream/master
 
 #### Additional Resources
 
@@ -69,10 +78,16 @@ No assignments for this class!
   - Avoiding bias and distortion
   - Intentionality
 - Types of visualization tools
+<<<<<<< HEAD
   - Dashboards
   - Exploration tools
   - Narrative tools
 - Strengths/weaknesses of each tool
+=======
+  - Explanatory/Narrative tools
+  - Exploration tools
+  - Dashboards
+>>>>>>> upstream/master
 
 #### Materials
 
