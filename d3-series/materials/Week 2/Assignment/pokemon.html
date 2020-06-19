@@ -10,7 +10,6 @@
     <script>
         d3.json("pokemon.json").then(function(data){
            //calculate the mean weight and height
-           console.log(data);
            let mean_weight = function(len){
                let sum = data.reduce(function(a,d){
                     let weight = parseFloat(d.weight);
@@ -19,7 +18,6 @@
                },0);
                return sum/len;
             }
-            //console.log(mean_weight(data.length)+"lbs");
 
             let mean_height = function(len){
                let sum = data.reduce(function(a,d){
@@ -29,7 +27,7 @@
                },0);
                return sum/len;
             }
-            //console.log(mean_height(data.length)+"iches");
+            console.log(mean_weight(data.length)+"lbs,"+mean_height(data.length)+"iches");
             
             //calculate egg distance
             let eggs = [];
@@ -48,7 +46,7 @@
             let egg_distance = eggs.reduce(function(a,d){
                 return a+d;
             },0);
-            //console.log(egg_distance);
+            console.log("egg_distance:"+egg_distance);
 
             //Determine which type of pokemon has the most weaknesses on average
             let types = [];
@@ -61,19 +59,17 @@
                     types.push(type);
                 });
             })
-            
             let type_mean = d3.nest()
               .key(function(d) { return d.key; })
               .rollup(function(v) { return d3.mean(v, function(d) { return d.weakness; }); })
-              .sortValues(d3.ascending)
               .entries(types)
               .sort(function(x, y){
                 return d3.descending(x.value, y.value);
            });
-
+           
             console.log(type_mean);
 
-            //Averge spawn time of weight categories
+        //Averge spawn time of weight categories
            let sum = data.reduce(function(a,d){
                     let weight = parseFloat(d.weight);
                     return a + weight;
@@ -94,8 +90,15 @@
             }
             grouped_weight.push(curr_weight);
 
+            spawns = [];
+            for(let i=0;i<grouped_weight.length;i++){
+                let spawn = grouped_weight[i].reduce(function(a,d){
+                    return a+d.avg_spawns;
+                },0);
+                spawns.push(spawn);
+            }
             
-            console.log(spawn);
+            console.log("ave spwans sum :"+spawns);
             
 
 
