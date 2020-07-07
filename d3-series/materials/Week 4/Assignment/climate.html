@@ -51,7 +51,26 @@
                     d.year = parseInt(d.year);
                     d.temp = +d.temp
                 });
-
+                
+                var years = [];
+                var min = d3.min(data, function(d) {
+                            return d.year;
+                        });
+                var max = d3.max(data,function(d){
+                    return d.year;
+                })
+                for(let i=0 ; i<=(max-min)/10; i++){
+                    years.push(min+i*10);
+                }
+                years.push(max);
+                var colors = [];
+                for(let j=0;j<years.length;j++){
+                    colors.push("rgb("+ Math.floor(Math.random() * 301)
+                                    +","+Math.floor(Math.random() * 301)
+                                    +","+Math.floor(Math.random() * 301)
+                                    +")");
+                }
+                console.log('color',colors);
                 console.log('clean', data);
 
                 // scales
@@ -114,7 +133,14 @@
                     .attr('height', function(d) {
                         return innerHeight - y(d.temp);
                     })
-                    .attr('fill', 'steelblue')
+                    // .attr('fill','rgb(12,240,233)')
+                    .attr('fill', function(d){
+                        for(let i=0;i<(years.length-1);i++){
+                            if((d.year>=years[i])&&(d.year<=years[i+1])){
+                                return colors[i];
+                            }
+                        }
+                    })
                     .attr('stroke', 'none');
 
                 // axis labels

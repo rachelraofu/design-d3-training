@@ -112,7 +112,12 @@
                     .attr('height', function(d) {
                         return innerHeight - y(d.Emissions);
                     })
-                    .attr('fill', 'steelblue')
+                    .attr('fill', function(d){
+                        if(d.Region == "West") return "red";
+                        else if(d.Region == "South") return "blue";
+                        else if(d.Region == "Northeast") return "yellow";
+                        else return "green";
+                    })
                     .attr('stroke', 'none');
 
                 // axis labels
@@ -128,7 +133,7 @@
                 g
                     .append('text')
                     .attr('class', 'y-axis-label')
-                    .attr('x', -30)
+                    .attr('x', -10)
                     .attr('y', innerHeight / 2)
                     .attr('transform', 'rotate(-90,-30,' + innerHeight / 2 + ')')
                     .attr('text-anchor', 'middle')
